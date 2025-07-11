@@ -1,0 +1,93 @@
+  [1m[35m (10.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY) /*application='MyBlog'*/[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='MyBlog'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MyBlog'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2025-07-11 11:56:06.430882', '2025-07-11 11:56:06.430885') RETURNING "key" /*application='MyBlog'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MyBlog'*/[0m
+Migrating to CreateArticles (20250711115534)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MyBlog'*/[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "articles" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "content" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='MyBlog'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250711115534') RETURNING "version" /*application='MyBlog'*/[0m
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MyBlog'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MyBlog'*/[0m
+Started GET "/" for 127.0.0.1 at 2025-07-11 17:02:02 +0500
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MyBlog'*/[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/hani/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/railties-8.0.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/hani/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/railties-8.0.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.8ms | GC: 0.0ms)
+Completed 200 OK in 1318ms (Views: 50.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 16.6ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2025-07-11 17:02:36 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/articles"):
+  
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-07-11 17:02:37 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started PUT "/__web_console/repl_sessions/b022d2425c8d9cf6e03bef85f08d67e9" for 127.0.0.1 at 2025-07-11 17:03:35 +0500
+Started GET "/articles" for 127.0.0.1 at 2025-07-11 17:06:11 +0500
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MyBlog'*/[0m
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (14.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles" /*action='index',application='MyBlog',controller='articles'*/[0m
+  ↳ app/views/articles/index.html.erb:5
+  Rendered articles/index.html.erb within layouts/application (Duration: 20.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 94.5ms | GC: 0.0ms)
+Completed 200 OK in 1624ms (Views: 94.0ms | ActiveRecord: 23.0ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/assets/application-8b441ae0.css" for 127.0.0.1 at 2025-07-11 17:06:13 +0500
+Started GET "/assets/application-bfcdf840.js" for 127.0.0.1 at 2025-07-11 17:06:13 +0500
+Started GET "/assets/turbo.min-3a2e143f.js" for 127.0.0.1 at 2025-07-11 17:06:13 +0500
+Started GET "/assets/controllers/hello_controller-708796bd.js" for 127.0.0.1 at 2025-07-11 17:06:13 +0500
+Started GET "/assets/controllers/index-ee64e1f1.js" for 127.0.0.1 at 2025-07-11 17:06:13 +0500
+Started GET "/assets/stimulus.min-4b1e420e.js" for 127.0.0.1 at 2025-07-11 17:06:14 +0500
+Started GET "/assets/stimulus-loading-1fc53fe7.js" for 127.0.0.1 at 2025-07-11 17:06:14 +0500
+Started GET "/assets/controllers/application-3affb389.js" for 127.0.0.1 at 2025-07-11 17:06:14 +0500
+Started GET "/articles/new" for 127.0.0.1 at 2025-07-11 17:06:15 +0500
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/new.html.erb within layouts/application (Duration: 118.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 120.2ms | GC: 0.0ms)
+Completed 200 OK in 656ms (Views: 120.8ms | ActiveRecord: 2.2ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/articles" for 127.0.0.1 at 2025-07-11 17:06:36 +0500
+Processing by ArticlesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]", "article" => {"title" => "Tesst", "content" => "Testing "}, "commit" => "Create Article"}
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='MyBlog',controller='articles'*/[0m
+  ↳ app/controllers/articles_controller.rb:16:in 'ArticlesController#create'
+  [1m[36mArticle Create (2.4ms)[0m  [1m[32mINSERT INTO "articles" ("title", "content", "created_at", "updated_at") VALUES ('Tesst', 'Testing ', '2025-07-11 12:06:37.187365', '2025-07-11 12:06:37.187365') RETURNING "id" /*action='create',application='MyBlog',controller='articles'*/[0m
+  ↳ app/controllers/articles_controller.rb:16:in 'ArticlesController#create'
+  [1m[36mTRANSACTION (8.0ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='MyBlog',controller='articles'*/[0m
+  ↳ app/controllers/articles_controller.rb:16:in 'ArticlesController#create'
+Redirected to http://127.0.0.1:3000/articles/1
+Completed 302 Found in 540ms (ActiveRecord: 10.8ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/articles/1" for 127.0.0.1 at 2025-07-11 17:06:37 +0500
+Processing by ArticlesController#show as TURBO_STREAM
+  Parameters: {"id" => "1"}
+  [1m[36mArticle Load (0.7ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = 1 LIMIT 1 /*action='show',application='MyBlog',controller='articles'*/[0m
+  ↳ app/controllers/articles_controller.rb:7:in 'ArticlesController#show'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (Duration: 4.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | GC: 0.0ms)
+Completed 200 OK in 550ms (Views: 6.2ms | ActiveRecord: 0.7ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2025-07-11 17:06:39 +0500
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles" /*action='index',application='MyBlog',controller='articles'*/[0m
+  ↳ app/views/articles/index.html.erb:5
+  Rendered articles/index.html.erb within layouts/application (Duration: 2.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | GC: 0.0ms)
+Completed 200 OK in 526ms (Views: 4.5ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
