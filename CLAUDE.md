@@ -12,7 +12,10 @@ This is a Ruby on Rails 8.0.2 learning project - a personal blog application bui
 ## Development Environment
 - **Ruby Version**: 3.4.4 (managed with rbenv)
 - **Rails Version**: 8.0.2
-- **Database**: SQLite3 (development), PostgreSQL (production planning)
+- **Database**: SQLite3 (development AND production) - Rails 8 "One Person Framework" philosophy
+- **Background Jobs**: Solid Queue (replaces Redis/Sidekiq)
+- **Caching**: Solid Cache (replaces Redis)
+- **WebSockets**: Solid Cable (replaces Redis for ActionCable)
 - **Operating System**: Linux/WSL2
 - **Server**: Puma (Rails default)
 
@@ -94,24 +97,34 @@ This is a Ruby on Rails 8.0.2 learning project - a personal blog application bui
 - Use database-level constraints
 - Plan for scalability from the start
 
-### Caching Strategy
+### Caching Strategy (Rails 8 Solid Cache)
+- Use Solid Cache for all caching needs (disk-based, no Redis required)
 - Page caching for static content
 - Fragment caching for dynamic content
 - Database query caching
 - Asset pipeline optimization
 
-## Deployment Considerations
+## Deployment Considerations (Rails 8 "One Person Framework")
 
 ### Development to Production Path
-1. **Local Development**: SQLite + Rails server
-2. **Staging**: PostgreSQL + production-like environment
-3. **Production**: Cloud hosting with monitoring
+1. **Local Development**: SQLite + Rails server + Solid gems
+2. **Staging**: Same stack as production (SQLite + Solid gems)
+3. **Production**: Single-server deployment with SQLite + Solid gems
 
-### Deployment Platforms (in order of recommendation)
-1. **Heroku**: Easiest for beginners
-2. **DigitalOcean**: Good balance of simplicity and control
-3. **AWS**: Most powerful but complex
-4. **Render**: Modern alternative to Heroku
+### Rails 8 Production Stack
+- **Database**: SQLite3 with WAL mode for production
+- **Background Jobs**: Solid Queue (no Redis needed)
+- **Caching**: Solid Cache (disk-based)
+- **WebSockets**: Solid Cable (no Redis needed)
+- **File Storage**: Local disk or cloud storage (S3, etc.)
+
+### Deployment Platforms (Rails 8 Compatible)
+1. **Fly.io**: Excellent for Rails 8 + SQLite deployments
+2. **Railway**: Modern platform with great Rails 8 support
+3. **DigitalOcean**: VPS with persistent storage for SQLite
+4. **AWS/GCP**: With persistent disk storage
+5. **Render**: Good for Rails 8 applications
+6. **Heroku**: ⚠️ Limited SQLite support (ephemeral filesystem)
 
 ## Learning Progression
 
@@ -125,13 +138,13 @@ This is a Ruby on Rails 8.0.2 learning project - a personal blog application bui
 - User authentication (Devise)
 - Authorization and permissions
 - File uploads and processing
-- Background jobs
+- Background jobs (Solid Queue)
 
 ### Phase 3: Advanced
 - API development
-- Real-time features (ActionCable)
-- Performance optimization
-- Production deployment
+- Real-time features (ActionCable with Solid Cable)
+- Performance optimization (SQLite tuning)
+- Production deployment (Rails 8 stack)
 
 ## Code Quality Standards
 
@@ -173,17 +186,23 @@ rails test:system
 rails console
 ```
 
-### Production Commands
+### Production Commands (Rails 8)
 ```bash
 # Precompile assets
 rails assets:precompile
 
-# Database setup in production
+# Database setup in production (SQLite)
 RAILS_ENV=production rails db:create
 RAILS_ENV=production rails db:migrate
 
+# Setup Solid Queue for background jobs
+RAILS_ENV=production bin/rails solid_queue:install
+
 # Check production readiness
 rails app:update
+
+# SQLite WAL mode configuration (automatic in Rails 8)
+# No manual Redis setup needed - Solid gems handle everything
 ```
 
 ## Debugging Guidelines

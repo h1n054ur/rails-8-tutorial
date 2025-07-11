@@ -172,10 +172,13 @@ docs/
 └── ...
 ```
 
-### v2.0 Tech Stack
+### v2.0 Tech Stack (Rails 8 "One Person Framework")
 - **Backend**: Ruby on Rails 8.0.2
 - **Authentication**: Devise gem
-- **Database**: SQLite3 (development), PostgreSQL (production ready)
+- **Database**: SQLite3 (development AND production)
+- **Background Jobs**: Solid Queue (replaces Redis/Sidekiq)
+- **Caching**: Solid Cache (replaces Redis)
+- **WebSockets**: Solid Cable (replaces Redis for ActionCable)
 - **Frontend**: ERB templates with enhanced styling
 - **Authorization**: Admin role-based access control
 - **Server**: Puma
@@ -223,10 +226,10 @@ This expanded tutorial teaches:
 
 ### Next Steps (Continuing v2.0)
 See `/docs/todo.md` for the next phases including:
-- **Phase 6**: Production Readiness (comprehensive tests, security, PostgreSQL)
+- **Phase 6**: Rails 8 Production Readiness (comprehensive tests, security, SQLite + Solid gems)
 - **Phase 7**: Tailwind CSS Integration (professional styling)
 - Advanced features (search, pagination, SEO)
-- Performance optimization and caching
+- Performance optimization and SQLite tuning
 
 **Current Status**: Function-complete blog following Rails philosophy of "Function First, Styling Later". All core functionality is implemented and ready for the styling phase.
 

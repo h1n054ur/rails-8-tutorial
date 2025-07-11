@@ -89,13 +89,17 @@
 - [x] Add article preview functionality in admin
 - [x] Document Phase 5 progress in journal-v2.1.md
 
-### Phase 6: Production Readiness
+### Phase 6: Rails 8 Production Readiness
 - [ ] Add comprehensive Rails tests (models, controllers, integration)
 - [ ] Set up proper database constraints and indexes
+- [ ] Configure SQLite for production (WAL mode, optimizations)
+- [ ] Implement Solid Queue for background jobs
+- [ ] Set up Solid Cache for caching
+- [ ] Configure Solid Cable for WebSockets
 - [ ] Configure production environment variables
 - [ ] Add security headers and CSRF protection
 - [ ] Set up error monitoring and logging
-- [ ] Configure production database (PostgreSQL)
+- [ ] Deploy using Rails 8 stack (SQLite + Solid gems)
 
 ## 🎨 STYLING PHASE (After All Features Work)
 
@@ -165,17 +169,21 @@
 
 ## 🌐 Production & Deployment
 
-### Production Readiness
-- [ ] Configure production database (PostgreSQL)
+### Production Readiness (Rails 8 Stack)
+- [ ] Configure production database (SQLite with WAL mode)
 - [ ] Set up environment variables
 - [ ] Add SSL/HTTPS configuration
 - [ ] Configure email delivery
 - [ ] Set up logging and monitoring
+- [ ] Configure Solid Queue for background jobs
+- [ ] Set up Solid Cache for caching
 
-### Deployment Options
-- [ ] Deploy to Heroku
-- [ ] Deploy to DigitalOcean
-- [ ] Deploy to AWS
+### Deployment Options (Rails 8 Compatible)
+- [ ] Deploy to Fly.io (Recommended for Rails 8 + SQLite)
+- [ ] Deploy to Railway (Great Rails 8 support)
+- [ ] Deploy to DigitalOcean (VPS with persistent storage)
+- [ ] Deploy to AWS/GCP (with persistent disk storage)
+- [ ] Deploy to Render (Good Rails 8 support)
 - [ ] Set up CI/CD pipeline
 - [ ] Configure domain name
 
@@ -195,12 +203,14 @@
 - [ ] Learn about Rails migrations and schema
 - [ ] Study Rails security best practices
 
-### Additional Technologies
+### Additional Technologies (Rails 8 Focus)
 - [ ] Learn Stimulus (Rails 8 JavaScript framework)
 - [ ] Explore Hotwire/Turbo for modern web apps
 - [ ] Study CSS frameworks (Bootstrap, Tailwind)
 - [ ] Learn about Rails API development
-- [ ] Explore background jobs (Sidekiq, Resque)
+- [ ] Master Solid Queue for background jobs (Rails 8 default)
+- [ ] Explore Solid Cache for caching (Rails 8 default)
+- [ ] Learn Solid Cable for WebSockets (Rails 8 default)
 
 ### Best Practices
 - [ ] Learn Test-Driven Development (TDD)
@@ -217,10 +227,10 @@
 3. **Phase 3**: Create admin namespace and basic CRUD operations
 4. **Phase 4**: Build public blog interface with published articles only
 
-### Week 2: Polish & Production
-1. **Phase 5**: Add comprehensive user experience features
-2. **Phase 6**: Implement production-ready security and testing
-3. Deploy to production environment
+### Week 2: Polish & Production (Rails 8 Stack)
+1. **Phase 5**: Add comprehensive user experience features ✅
+2. **Phase 6**: Implement Rails 8 production readiness (SQLite + Solid gems)
+3. Deploy using Rails 8 stack (SQLite + Solid Queue/Cache/Cable)
 4. Configure monitoring and logging
 
 ### Week 3: Visual Design

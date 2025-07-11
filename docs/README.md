@@ -13,6 +13,9 @@
 - `todo.md` - Comprehensive todo list with completed and planned features
 - `README.md` - This file, documentation index
 
+### Rails 8 Documentation
+- `rails-8-features.md` - Rails 8 "One Person Framework" philosophy and Solid gems overview
+
 ### Development Guidelines
 - See `/CLAUDE.md` in root directory for AI assistant instructions
 - Each journal version covers major feature milestones
