@@ -1,5 +1,16 @@
 Rails.application.routes.draw do
-  resources :articles
+  devise_for :users
+  resources :articles, only: [:index, :show]
+  
+  namespace :admin do
+    resources :articles do
+      member do
+        patch :publish
+        patch :unpublish
+        get :preview
+      end
+    end
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -11,5 +22,5 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  root "articles#index"
 end

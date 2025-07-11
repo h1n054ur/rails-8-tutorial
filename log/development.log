@@ -91,3 +91,444 @@ Processing by ArticlesController#index as HTML
 Completed 200 OK in 526ms (Views: 4.5ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
 
 
+  [1m[36mActiveRecord::InternalMetadata Load (1.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MyBlog'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MyBlog'*/[0m
+Migrating to AddPublishingFieldsToArticles (20250711125001)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MyBlog'*/[0m
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "articles" ADD "published" boolean DEFAULT 0 NOT NULL /*application='MyBlog'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "articles" ADD "published_at" datetime(6) /*application='MyBlog'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250711125001') RETURNING "version" /*application='MyBlog'*/[0m
+  [1m[36mTRANSACTION (6.6ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MyBlog'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MyBlog'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN deferred TRANSACTION /*application='MyBlog'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1 /*application='MyBlog'*/[0m
+  [1m[36mArticle Count (23.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "articles" /*application='MyBlog'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2 /*application='MyBlog'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_3 /*application='MyBlog'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_4 /*application='MyBlog'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_5 /*application='MyBlog'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_6 /*application='MyBlog'*/[0m
+  [1m[36mArticle Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "articles" WHERE "articles"."published" = 1 /*application='MyBlog'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_7 /*application='MyBlog'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_8 /*application='MyBlog'*/[0m
+  [1m[36mArticle Count (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "articles" WHERE "articles"."published" = 0 /*application='MyBlog'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MyBlog'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MyBlog'*/[0m
+Migrating to DeviseCreateUsers (20250711125717)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MyBlog'*/[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime(6), "remember_created_at" datetime(6), "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='MyBlog'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email") /*application='MyBlog'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token") /*application='MyBlog'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250711125717') RETURNING "version" /*application='MyBlog'*/[0m
+  [1m[36mTRANSACTION (12.0ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MyBlog'*/[0m
+Migrating to AddAdminToUsers (20250711125802)
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MyBlog'*/[0m
+  [1m[35m (2.7ms)[0m  [1m[35mALTER TABLE "users" ADD "admin" boolean DEFAULT 0 NOT NULL /*application='MyBlog'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250711125802') RETURNING "version" /*application='MyBlog'*/[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MyBlog'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MyBlog'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MyBlog'*/[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'admin@example.com' LIMIT 1 /*application='MyBlog'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MyBlog'*/[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'admin@example.com' LIMIT 1 /*application='MyBlog'*/[0m
+  [1m[36mCACHE User Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'admin@example.com' LIMIT 1[0m
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "admin") VALUES ('admin@example.com', '$2a$12$aWEvEJO8Z/O.McCX0J0Ct.57RZznmk4QoPnCEj1S5j3dUckAFSDBG', NULL, NULL, NULL, '2025-07-11 12:59:39.410754', '2025-07-11 12:59:39.410754', 1) RETURNING "id" /*application='MyBlog'*/[0m
+  [1m[36mTRANSACTION (7.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MyBlog'*/[0m
+  [1m[36mArticle Count (1.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "articles" /*application='MyBlog'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.9ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MyBlog'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MyBlog'*/[0m
+Migrating to AddUserToArticles (20250711130504)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MyBlog'*/[0m
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "articles" ADD "user_id" integer /*application='MyBlog'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_articles_on_user_id" ON "articles" ("user_id") /*application='MyBlog'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mPRAGMA foreign_keys /*application='MyBlog'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys /*application='MyBlog'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON /*application='MyBlog'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF /*application='MyBlog'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aarticles" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "content" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "published" boolean DEFAULT 0 NOT NULL, "published_at" datetime(6), "user_id" integer) /*application='MyBlog'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aarticles_on_user_id" ON "aarticles" ("user_id") /*application='MyBlog'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "aarticles" ("id","title","content","created_at","updated_at","published","published_at","user_id")
+                     SELECT "id","title","content","created_at","updated_at","published","published_at","user_id" FROM "articles" /*application='MyBlog'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "articles" /*application='MyBlog'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "articles" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "content" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "published" boolean DEFAULT 0 NOT NULL, "published_at" datetime(6), "user_id" integer, CONSTRAINT "fk_rails_3d31dad1cc"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+) /*application='MyBlog'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_articles_on_user_id" ON "articles" ("user_id") /*application='MyBlog'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "articles" ("id","title","content","created_at","updated_at","published","published_at","user_id")
+                     SELECT "id","title","content","created_at","updated_at","published","published_at","user_id" FROM "aarticles" /*application='MyBlog'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "aarticles" /*application='MyBlog'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0 /*application='MyBlog'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1 /*application='MyBlog'*/[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."admin" = 1 LIMIT 1 /*application='MyBlog'*/[0m
+  [1m[36mArticle Update All (0.1ms)[0m  [1m[33mUPDATE "articles" SET "user_id" = 1 WHERE "articles"."user_id" IS NULL /*application='MyBlog'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mPRAGMA foreign_keys /*application='MyBlog'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys /*application='MyBlog'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON /*application='MyBlog'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF /*application='MyBlog'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aarticles" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "content" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "published" boolean DEFAULT 0 NOT NULL, "published_at" datetime(6), "user_id" integer) /*application='MyBlog'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aarticles_on_user_id" ON "aarticles" ("user_id") /*application='MyBlog'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "aarticles" ("id","title","content","created_at","updated_at","published","published_at","user_id")
+                     SELECT "id","title","content","created_at","updated_at","published","published_at","user_id" FROM "articles" /*application='MyBlog'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "articles" /*application='MyBlog'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "articles" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "content" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "published" boolean DEFAULT 0 NOT NULL, "published_at" datetime(6), "user_id" integer NOT NULL, CONSTRAINT "fk_rails_3d31dad1cc"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+) /*application='MyBlog'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_articles_on_user_id" ON "articles" ("user_id") /*application='MyBlog'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "articles" ("id","title","content","created_at","updated_at","published","published_at","user_id")
+                     SELECT "id","title","content","created_at","updated_at","published","published_at","user_id" FROM "aarticles" /*application='MyBlog'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aarticles" /*application='MyBlog'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0 /*application='MyBlog'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1 /*application='MyBlog'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250711130504') RETURNING "version" /*application='MyBlog'*/[0m
+  [1m[36mTRANSACTION (11.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MyBlog'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MyBlog'*/[0m
+Started GET "/users/signins" for 127.0.0.1 at 2025-07-11 18:11:06 +0500
+  [1m[36mActiveRecord::SchemaMigration Load (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MyBlog'*/[0m
+  
+ActionController::RoutingError (No route matches [GET] "/users/signins"):
+  
+Started GET "/users/sign_in" for 127.0.0.1 at 2025-07-11 18:11:18 +0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /home/hani/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/hani/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 0.5ms | GC: 0.0ms)
+  Rendered /home/hani/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 66.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 137.5ms | GC: 1.0ms)
+Completed 200 OK in 1286ms (Views: 151.0ms | ActiveRecord: 24.4ms (0 queries, 0 cached) | GC: 3.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2025-07-11 18:11:32 +0500
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]", "user" => {"email" => "[FILTERED]", "password" => "[FILTERED]", "remember_me" => "1"}, "commit" => "Log in"}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'admin@example.com' ORDER BY "users"."id" ASC LIMIT 1 /*action='create',application='MyBlog',controller='sessions'*/[0m
+Completed 401 Unauthorized in 780ms (ActiveRecord: 2.0ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Processing by Devise::SessionsController#new as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]", "user" => {"email" => "[FILTERED]", "password" => "[FILTERED]", "remember_me" => "1"}, "commit" => "Log in"}
+  Rendering layout layouts/application.html.erb
+  Rendering /home/hani/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/hani/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered /home/hani/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 2.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | GC: 0.0ms)
+Completed 200 OK in 701ms (Views: 4.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/admin/articles" for 127.0.0.1 at 2025-07-11 18:11:50 +0500
+Processing by Admin::ArticlesController#index as HTML
+Completed 401 Unauthorized in 501ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 2.6ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2025-07-11 18:11:50 +0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /home/hani/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/hani/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered /home/hani/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 2.5ms | GC: 0.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.8ms | GC: 1.4ms)
+Completed 200 OK in 506ms (Views: 6.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 4.4ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2025-07-11 18:12:04 +0500
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]", "user" => {"email" => "[FILTERED]", "password" => "[FILTERED]", "remember_me" => "0"}, "commit" => "Log in"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'admin@example.com' ORDER BY "users"."id" ASC LIMIT 1 /*action='create',application='MyBlog',controller='sessions'*/[0m
+Completed 401 Unauthorized in 681ms (ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 5.0ms)
+
+
+Processing by Devise::SessionsController#new as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]", "user" => {"email" => "[FILTERED]", "password" => "[FILTERED]", "remember_me" => "0"}, "commit" => "Log in"}
+  Rendering layout layouts/application.html.erb
+  Rendering /home/hani/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/hani/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered /home/hani/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 3.3ms | GC: 1.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.7ms | GC: 2.2ms)
+Completed 200 OK in 699ms (Views: 6.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 3.4ms)
+
+
+Started GET "/admin/articles" for ::1 at 2025-07-11 18:12:20 +0500
+Processing by Admin::ArticlesController#index as HTML
+Completed 401 Unauthorized in 522ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 2.8ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2025-07-11 18:12:21 +0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /home/hani/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/hani/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 0.7ms | GC: 0.5ms)
+  Rendered /home/hani/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 3.9ms | GC: 1.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | GC: 2.2ms)
+Completed 200 OK in 533ms (Views: 6.9ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 3.4ms)
+
+
+Started GET "/assets/application-8b441ae0.css" for ::1 at 2025-07-11 18:12:21 +0500
+Started GET "/assets/application-bfcdf840.js" for ::1 at 2025-07-11 18:12:22 +0500
+Started GET "/assets/turbo.min-3a2e143f.js" for ::1 at 2025-07-11 18:12:22 +0500
+Started GET "/assets/controllers/hello_controller-708796bd.js" for ::1 at 2025-07-11 18:12:22 +0500
+Started GET "/assets/controllers/index-ee64e1f1.js" for ::1 at 2025-07-11 18:12:22 +0500
+Started GET "/assets/stimulus.min-4b1e420e.js" for ::1 at 2025-07-11 18:12:22 +0500
+Started GET "/assets/stimulus-loading-1fc53fe7.js" for ::1 at 2025-07-11 18:12:22 +0500
+Started GET "/assets/controllers/application-3affb389.js" for ::1 at 2025-07-11 18:12:22 +0500
+Started GET "/users/sign_in" for ::1 at 2025-07-11 18:14:36 +0500
+  [1m[36mActiveRecord::SchemaMigration Load (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MyBlog'*/[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /home/hani/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/hani/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 0.5ms | GC: 0.0ms)
+  Rendered /home/hani/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 27.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 96.9ms | GC: 0.0ms)
+Completed 200 OK in 1336ms (Views: 172.6ms | ActiveRecord: 24.9ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2025-07-11 18:14:45 +0500
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]", "user" => {"email" => "[FILTERED]", "password" => "[FILTERED]", "remember_me" => "0"}, "commit" => "Log in"}
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'admin@example.com' ORDER BY "users"."id" ASC LIMIT 1 /*action='create',application='MyBlog',controller='sessions'*/[0m
+Completed 401 Unauthorized in 740ms (ActiveRecord: 2.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Processing by Devise::SessionsController#new as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]", "user" => {"email" => "[FILTERED]", "password" => "[FILTERED]", "remember_me" => "0"}, "commit" => "Log in"}
+  Rendering layout layouts/application.html.erb
+  Rendering /home/hani/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/hani/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered /home/hani/.rbenv/versions/3.4.4/lib/ruby/gems/3.4.0/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 2.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | GC: 0.0ms)
+Completed 200 OK in 713ms (Views: 4.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2025-07-11 18:15:00 +0500
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]", "user" => {"email" => "[FILTERED]", "password" => "[FILTERED]", "remember_me" => "0"}, "commit" => "Log in"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'admin@example.com' ORDER BY "users"."id" ASC LIMIT 1 /*action='create',application='MyBlog',controller='sessions'*/[0m
+Redirected to http://localhost:3000/admin/articles
+Completed 303 See Other in 690ms (ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/admin/articles" for ::1 at 2025-07-11 18:15:01 +0500
+Processing by Admin::ArticlesController#index as TURBO_STREAM
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='MyBlog',controller='articles'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering admin/articles/index.html.erb within layouts/application
+  [1m[36mArticle Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "articles" WHERE "articles"."published" = 1 /*action='index',application='MyBlog',controller='articles'*/[0m
+  ↳ app/views/admin/articles/index.html.erb:10
+  [1m[36mArticle Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "articles" WHERE "articles"."published" = 1 LIMIT 1 /*action='index',application='MyBlog',controller='articles'*/[0m
+  ↳ app/views/admin/articles/index.html.erb:11
+  [1m[36mArticle Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "articles" WHERE "articles"."published" = 0 /*action='index',application='MyBlog',controller='articles'*/[0m
+  ↳ app/views/admin/articles/index.html.erb:45
+  [1m[36mArticle Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "articles" WHERE "articles"."published" = 0 LIMIT 1 /*action='index',application='MyBlog',controller='articles'*/[0m
+  ↳ app/views/admin/articles/index.html.erb:46
+  [1m[36mArticle Load (0.7ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."published" = 0 ORDER BY "articles"."created_at" DESC /*action='index',application='MyBlog',controller='articles'*/[0m
+  ↳ app/views/admin/articles/index.html.erb:57
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 /*action='index',application='MyBlog',controller='articles'*/[0m
+  ↳ app/views/admin/articles/index.html.erb:57
+  Rendered admin/articles/index.html.erb within layouts/application (Duration: 136.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 155.6ms | GC: 18.2ms)
+Completed 200 OK in 716ms (Views: 154.4ms | ActiveRecord: 4.9ms (7 queries, 0 cached) | GC: 18.2ms)
+
+
+Started GET "/articles" for ::1 at 2025-07-11 18:15:07 +0500
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."published" = 1 ORDER BY "articles"."created_at" DESC /*action='index',application='MyBlog',controller='articles'*/[0m
+  ↳ app/views/articles/index.html.erb:5
+  Rendered articles/index.html.erb within layouts/application (Duration: 5.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.7ms | GC: 0.8ms)
+Completed 200 OK in 527ms (Views: 10.1ms | ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.8ms)
+
+
+Started GET "/admin/articles/1/publish" for ::1 at 2025-07-11 18:15:10 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/admin/articles/1/publish"):
+  
+Started GET "/admin/articles" for ::1 at 2025-07-11 18:15:12 +0500
+Processing by Admin::ArticlesController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='MyBlog',controller='articles'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering admin/articles/index.html.erb within layouts/application
+  [1m[36mArticle Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "articles" WHERE "articles"."published" = 1 /*action='index',application='MyBlog',controller='articles'*/[0m
+  ↳ app/views/admin/articles/index.html.erb:10
+  [1m[36mArticle Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "articles" WHERE "articles"."published" = 1 LIMIT 1 /*action='index',application='MyBlog',controller='articles'*/[0m
+  ↳ app/views/admin/articles/index.html.erb:11
+  [1m[36mArticle Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "articles" WHERE "articles"."published" = 0 /*action='index',application='MyBlog',controller='articles'*/[0m
+  ↳ app/views/admin/articles/index.html.erb:45
+  [1m[36mArticle Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "articles" WHERE "articles"."published" = 0 LIMIT 1 /*action='index',application='MyBlog',controller='articles'*/[0m
+  ↳ app/views/admin/articles/index.html.erb:46
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."published" = 0 ORDER BY "articles"."created_at" DESC /*action='index',application='MyBlog',controller='articles'*/[0m
+  ↳ app/views/admin/articles/index.html.erb:57
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 /*action='index',application='MyBlog',controller='articles'*/[0m
+  ↳ app/views/admin/articles/index.html.erb:57
+  Rendered admin/articles/index.html.erb within layouts/application (Duration: 11.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 12.3ms | GC: 0.0ms)
+Completed 200 OK in 557ms (Views: 10.5ms | ActiveRecord: 3.0ms (7 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/articles" for ::1 at 2025-07-11 18:15:13 +0500
+Processing by ArticlesController#index as HTML
+Started GET "/admin/articles/new" for ::1 at 2025-07-11 18:15:13 +0500
+Processing by Admin::ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."published" = 1 ORDER BY "articles"."created_at" DESC /*action='index',application='MyBlog',controller='articles'*/[0m
+  ↳ app/views/articles/index.html.erb:5
+  Rendered articles/index.html.erb within layouts/application (Duration: 3.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | GC: 0.0ms)
+Completed 200 OK in 542ms (Views: 4.7ms | ActiveRecord: 0.6ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/articles" for ::1 at 2025-07-11 18:15:14 +0500
+Processing by ArticlesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='MyBlog',controller='articles'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering admin/articles/new.html.erb within layouts/application
+  Rendered admin/articles/new.html.erb within layouts/application (Duration: 7.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 9.9ms | GC: 0.0ms)
+Completed 200 OK in 617ms (Views: 10.5ms | ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/admin/articles/new" for ::1 at 2025-07-11 18:15:14 +0500
+Processing by Admin::ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."published" = 1 ORDER BY "articles"."created_at" DESC /*action='index',application='MyBlog',controller='articles'*/[0m
+  ↳ app/views/articles/index.html.erb:5
+  Rendered articles/index.html.erb within layouts/application (Duration: 2.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | GC: 0.0ms)
+Completed 200 OK in 611ms (Views: 4.8ms | ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='MyBlog',controller='articles'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering admin/articles/new.html.erb within layouts/application
+  Rendered admin/articles/new.html.erb within layouts/application (Duration: 1.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.6ms | GC: 0.0ms)
+Completed 200 OK in 533ms (Views: 3.3ms | ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/articles/new" for ::1 at 2025-07-11 18:15:15 +0500
+Processing by ArticlesController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='MyBlog',controller='articles'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/new.html.erb within layouts/application (Duration: 4.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | GC: 0.0ms)
+Completed 200 OK in 524ms (Views: 6.0ms | ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/admin/articles/new" for ::1 at 2025-07-11 18:20:28 +0500
+Started GET "/articles" for ::1 at 2025-07-11 18:20:28 +0500
+Processing by Admin::ArticlesController#new as HTML
+Processing by ArticlesController#index as HTML
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='MyBlog',controller='articles'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering admin/articles/new.html.erb within layouts/application
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='MyBlog',controller='articles'*/[0m
+  Rendered admin/articles/new.html.erb within layouts/application (Duration: 7.3ms | GC: 0.0ms)
+  ↳ app/views/articles/index.html.erb:3
+  [1m[36mArticle Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "articles" WHERE "articles"."published" = 1 LIMIT 1 /*action='index',application='MyBlog',controller='articles'*/[0m
+  ↳ app/views/articles/index.html.erb:9
+  Rendered articles/index.html.erb within layouts/application (Duration: 8.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 18.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 20.9ms | GC: 0.0ms)
+Completed 200 OK in 462ms (Views: 30.3ms | ActiveRecord: 5.9ms (2 queries, 0 cached) | GC: 1.1ms)
+
+
+Completed 200 OK in 463ms (Views: 25.4ms | ActiveRecord: 18.5ms (1 query, 0 cached) | GC: 1.1ms)
+
+
+Started GET "/articles" for ::1 at 2025-07-11 18:20:31 +0500
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='MyBlog',controller='articles'*/[0m
+  ↳ app/views/articles/index.html.erb:3
+  [1m[36mArticle Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "articles" WHERE "articles"."published" = 1 LIMIT 1 /*action='index',application='MyBlog',controller='articles'*/[0m
+  ↳ app/views/articles/index.html.erb:9
+  Rendered articles/index.html.erb within layouts/application (Duration: 4.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.1ms | GC: 0.0ms)
+Completed 200 OK in 535ms (Views: 5.9ms | ActiveRecord: 0.9ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/articles" for ::1 at 2025-07-11 18:20:33 +0500
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='MyBlog',controller='articles'*/[0m
+  ↳ app/views/articles/index.html.erb:3
+  [1m[36mArticle Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "articles" WHERE "articles"."published" = 1 LIMIT 1 /*action='index',application='MyBlog',controller='articles'*/[0m
+  ↳ app/views/articles/index.html.erb:9
+  Rendered articles/index.html.erb within layouts/application (Duration: 5.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.2ms | GC: 0.0ms)
+Completed 200 OK in 547ms (Views: 5.9ms | ActiveRecord: 0.9ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/articles" for ::1 at 2025-07-11 18:20:38 +0500
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='MyBlog',controller='articles'*/[0m
+  ↳ app/views/articles/index.html.erb:3
+  [1m[36mArticle Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "articles" WHERE "articles"."published" = 1 LIMIT 1 /*action='index',application='MyBlog',controller='articles'*/[0m
+  ↳ app/views/articles/index.html.erb:9
+  Rendered articles/index.html.erb within layouts/application (Duration: 13.4ms | GC: 8.7ms)
+  Rendered layout layouts/application.html.erb (Duration: 14.7ms | GC: 8.7ms)
+Completed 200 OK in 527ms (Views: 14.4ms | ActiveRecord: 0.9ms (2 queries, 0 cached) | GC: 8.7ms)
+
+
+Started GET "/articles" for ::1 at 2025-07-11 18:20:41 +0500
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='MyBlog',controller='articles'*/[0m
+  ↳ app/views/articles/index.html.erb:3
+  [1m[36mArticle Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "articles" WHERE "articles"."published" = 1 LIMIT 1 /*action='index',application='MyBlog',controller='articles'*/[0m
+  ↳ app/views/articles/index.html.erb:9
+  Rendered articles/index.html.erb within layouts/application (Duration: 5.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.1ms | GC: 0.8ms)
+Completed 200 OK in 538ms (Views: 6.9ms | ActiveRecord: 0.9ms (2 queries, 0 cached) | GC: 0.8ms)
+
+
+Started GET "/articles" for ::1 at 2025-07-11 18:20:42 +0500
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='MyBlog',controller='articles'*/[0m
+  ↳ app/views/articles/index.html.erb:3
+  [1m[36mArticle Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "articles" WHERE "articles"."published" = 1 LIMIT 1 /*action='index',application='MyBlog',controller='articles'*/[0m
+  ↳ app/views/articles/index.html.erb:9
+  Rendered articles/index.html.erb within layouts/application (Duration: 5.4ms | GC: 0.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.8ms | GC: 0.5ms)
+Completed 200 OK in 545ms (Views: 6.6ms | ActiveRecord: 0.9ms (2 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/articles" for ::1 at 2025-07-11 18:20:44 +0500
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='MyBlog',controller='articles'*/[0m
+  ↳ app/views/articles/index.html.erb:3
+  [1m[36mArticle Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "articles" WHERE "articles"."published" = 1 LIMIT 1 /*action='index',application='MyBlog',controller='articles'*/[0m
+  ↳ app/views/articles/index.html.erb:9
+  Rendered articles/index.html.erb within layouts/application (Duration: 5.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.3ms | GC: 0.0ms)
+Completed 200 OK in 533ms (Views: 5.9ms | ActiveRecord: 1.0ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/articles" for ::1 at 2025-07-11 18:20:46 +0500
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='MyBlog',controller='articles'*/[0m
+  ↳ app/views/articles/index.html.erb:3
+  [1m[36mArticle Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "articles" WHERE "articles"."published" = 1 LIMIT 1 /*action='index',application='MyBlog',controller='articles'*/[0m
+  ↳ app/views/articles/index.html.erb:9
+  Rendered articles/index.html.erb within layouts/application (Duration: 5.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.4ms | GC: 0.0ms)
+Completed 200 OK in 540ms (Views: 6.1ms | ActiveRecord: 0.9ms (2 queries, 0 cached) | GC: 0.0ms)
+
+

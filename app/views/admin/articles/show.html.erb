@@ -1,0 +1,103 @@
+<h1><%= @article.title %></h1>
+
+<div class="article-meta">
+  <p><strong>Author:</strong> <%= @article.user.email %></p>
+  <p><strong>Status:</strong> 
+    <% if @article.published? %>
+      <span class="status-published">Published</span>
+      <% if @article.published_at %>
+        on <%= @article.published_at.strftime("%B %d, %Y at %I:%M %p") %>
+      <% end %>
+    <% else %>
+      <span class="status-draft">Draft</span>
+    <% end %>
+  </p>
+  <p><strong>Created:</strong> <%= @article.created_at.strftime("%B %d, %Y at %I:%M %p") %></p>
+  <p><strong>Updated:</strong> <%= @article.updated_at.strftime("%B %d, %Y at %I:%M %p") %></p>
+</div>
+
+<div class="article-content">
+  <%= simple_format(@article.content) %>
+</div>
+
+<div class="article-actions">
+  <%= link_to "Edit", edit_admin_article_path(@article), class: "btn btn-primary" %>
+  <%= link_to "Preview", preview_admin_article_path(@article), class: "btn btn-info", target: "_blank" %>
+  
+  <% if @article.published? %>
+    <%= link_to "Unpublish", unpublish_admin_article_path(@article), method: :patch, 
+                confirm: "Are you sure you want to unpublish '#{@article.title}'? It will no longer be visible to the public.", 
+                class: "btn btn-warning" %>
+  <% else %>
+    <%= link_to "Publish", publish_admin_article_path(@article), method: :patch, class: "btn btn-success" %>
+  <% end %>
+  
+  <%= link_to "Delete", admin_article_path(@article), method: :delete, 
+              confirm: "Are you sure you want to permanently delete '#{@article.title}'? This action cannot be undone.", 
+              class: "btn btn-danger" %>
+  
+  <%= link_to "Back to Admin", admin_articles_path, class: "btn btn-secondary" %>
+  
+  <% if @article.published? %>
+    <%= link_to "View Public", article_path(@article), class: "btn btn-outline", target: "_blank" %>
+  <% end %>
+</div>
+
+<style>
+  .article-meta {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+  }
+  
+  .article-meta p {
+    margin: 8px 0;
+    color: #666;
+  }
+  
+  .status-published {
+    color: #28a745;
+    font-weight: bold;
+  }
+  
+  .status-draft {
+    color: #ffc107;
+    font-weight: bold;
+  }
+  
+  .article-content {
+    line-height: 1.6;
+    margin: 30px 0;
+    font-size: 16px;
+  }
+  
+  .article-actions {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 4px;
+    text-decoration: none;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: #f8f9fa;
+    color: #333;
+  }
+  .btn-primary { background-color: #007bff; color: white; }
+  .btn-secondary { background-color: #6c757d; color: white; }
+  .btn-success { background-color: #28a745; color: white; }
+  .btn-warning { background-color: #ffc107; color: black; }
+  .btn-danger { background-color: #dc3545; color: white; }
+  .btn-info { background-color: #17a2b8; color: white; }
+  .btn-outline { background-color: transparent; }
+  
+  h1 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+</style>

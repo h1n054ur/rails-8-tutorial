@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PREVIEW: <%= @article.title %> - My Blog</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <div class="preview-banner">
+      <div class="preview-banner-content">
+        <strong>PREVIEW MODE</strong> - This is how your article will appear to the public
+        <div class="preview-actions">
+          <%= link_to "Close Preview", admin_article_path(@article), class: "btn btn-sm btn-outline" %>
+          <%= link_to "Edit Article", edit_admin_article_path(@article), class: "btn btn-sm btn-primary" %>
+        </div>
+      </div>
+    </div>
+    
+    <%= yield %>
+    
+    <style>
+      .preview-banner {
+        background-color: #ffc107;
+        color: #000;
+        padding: 10px 0;
+        text-align: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        border-bottom: 2px solid #e0a800;
+      }
+      
+      .preview-banner-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      
+      .preview-actions {
+        display: flex;
+        gap: 10px;
+      }
+      
+      .btn {
+        display: inline-block;
+        padding: 6px 12px;
+        text-decoration: none;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+        cursor: pointer;
+      }
+      
+      .btn-sm {
+        padding: 4px 8px;
+        font-size: 12px;
+      }
+      
+      .btn-primary {
+        background-color: #007bff;
+        color: white;
+        border-color: #007bff;
+      }
+      
+      .btn-outline {
+        background-color: transparent;
+        color: #000;
+        border-color: #000;
+      }
+      
+      body {
+        padding-top: 60px;
+      }
+      
+      @media (max-width: 768px) {
+        .preview-banner-content {
+          flex-direction: column;
+          gap: 10px;
+        }
+        
+        .preview-actions {
+          flex-direction: column;
+          width: 100%;
+        }
+        
+        .btn {
+          text-align: center;
+        }
+      }
+    </style>
+  </body>
+</html>

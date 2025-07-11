@@ -1,7 +1,81 @@
-<h1><%= @article.title %></h1>
+<article class="blog-article">
+  <header class="article-header">
+    <h1><%= @article.title %></h1>
+    <div class="article-meta">
+      <span>Published on <%= @article.published_at.strftime("%B %d, %Y") %></span>
+      <span>by <%= @article.user.email %></span>
+    </div>
+  </header>
 
-<p><%= simple_format(@article.content) %></p>
+  <div class="article-content">
+    <%= simple_format(@article.content) %>
+  </div>
 
-<%= link_to "Edit", edit_article_path(@article) %> |
-<%= link_to "Delete", article_path(@article), method: :delete, data: { confirm: "Are you sure?" } %> |
-<%= link_to "Back to Articles", articles_path %>
+  <footer class="article-footer">
+    <%= link_to "← Back to Blog", articles_path, class: "btn btn-secondary" %>
+    
+    <% if current_user&.admin? %>
+      <%= link_to "Edit Article", edit_admin_article_path(@article), class: "btn btn-primary" %>
+    <% end %>
+  </footer>
+</article>
+
+<style>
+  .blog-article {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .article-header {
+    border-bottom: 2px solid #eee;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .article-header h1 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 2.5em;
+  }
+  
+  .article-meta {
+    color: #666;
+    font-size: 14px;
+  }
+  
+  .article-meta span {
+    margin-right: 15px;
+  }
+  
+  .article-content {
+    line-height: 1.8;
+    font-size: 16px;
+    color: #444;
+    margin-bottom: 40px;
+  }
+  
+  .article-content p {
+    margin-bottom: 20px;
+  }
+  
+  .article-footer {
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: #f8f9fa;
+    color: #333;
+  }
+  .btn-primary { background-color: #007bff; color: white; }
+  .btn-secondary { background-color: #6c757d; color: white; }
+</style>
